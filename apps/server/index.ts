@@ -1,6 +1,6 @@
 import { serve } from "@hono/node-server";
 import { cors } from "hono/cors";
-import { app } from "./router.js";
+import { API_PREFIX, app } from "./router.js";
 
 const PORT = process.env.PORT || 3001;
 
@@ -10,7 +10,7 @@ const allowedOrigins = [
 ];
 
 app.use(
-  "/*",
+  `${API_PREFIX}/*`,
   cors({
     origin: (origin) =>
       allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
@@ -25,6 +25,6 @@ serve(
   },
   (info) => {
     console.log(`🚀 Server running on http://localhost:${info.port}`);
-    console.log(`📡 API: http://localhost:${info.port}`);
+    console.log(`📡 API: http://localhost:${info.port}${API_PREFIX}`);
   }
 );
