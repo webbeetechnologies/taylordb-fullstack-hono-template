@@ -53,20 +53,20 @@ services:
       port: 5173
       env:
         vars:
-          TRPC_URL: routing.server.url
+          API_URL: routing.server.url
     start:
       command: pnpm preview --port 5173
       port: 5173
       env:
         vars:
-          TRPC_URL: routing.server.url
+          API_URL: routing.server.url
       
     build:
       commands:
         - pnpm build
       env:
         vars:
-          TRPC_URL: routing.server.url
+          API_URL: routing.server.url
 
 taylordb:
   version: 0.17.0
