@@ -80,7 +80,7 @@ preview:
   service: client
 
 routing:
-  - path: /api
+  - path: /
     service: server
   - path: /
     service: client

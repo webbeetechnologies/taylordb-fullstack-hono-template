@@ -56,7 +56,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 export const api = {
   hello: (name?: string) =>
     request<HelloResponse>(
-      name ? `/api/hello?name=${encodeURIComponent(name)}` : "/api/hello"
+      name ? `/hello?name=${encodeURIComponent(name)}` : "/hello"
     ),
 
   tasks: {
@@ -66,16 +66,16 @@ export const api = {
       if (filters?.limit) params.set("limit", String(filters.limit));
 
       const query = params.toString();
-      return request<Task[]>(query ? `/api/tasks?${query}` : "/api/tasks");
+      return request<Task[]>(query ? `/tasks?${query}` : "/tasks");
     },
     create: (formData: FormData) =>
-      request<Task>("/api/tasks", {
+      request<Task>("/tasks", {
         method: "POST",
         body: formData,
       }),
   },
 
   collaborators: {
-    list: () => request<Collaborator[]>("/api/collaborators"),
+    list: () => request<Collaborator[]>("/collaborators"),
   },
 };

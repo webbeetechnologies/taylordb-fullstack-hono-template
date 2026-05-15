@@ -10,7 +10,7 @@ const allowedOrigins = [
 ];
 
 app.use(
-  "/api/*",
+  "/*",
   cors({
     origin: (origin) =>
       allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
@@ -25,6 +25,6 @@ serve(
   },
   (info) => {
     console.log(`🚀 Server running on http://localhost:${info.port}`);
-    console.log(`📡 API: http://localhost:${info.port}/api`);
+    console.log(`📡 API: http://localhost:${info.port}`);
   }
 );
